@@ -3,12 +3,10 @@ package org.app.hackio.rajasthanhackathonprototype;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,10 +15,10 @@ public class MainActivity extends AppCompatActivity {
     //This is our viewPager
     private ViewPager viewPager;
     HomeFragment homeFragment;
-    MarketplaceFragment marketplaceFragment;
+    SellFragment sellFragment;
+    BuyFragment buyFragment;
     SuggestionsFragment suggestionsFragment;
     MenuItem prevMenuItem;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +36,14 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navigation_home:
                         viewPager.setCurrentItem(0);
                         break;
-                    case R.id.navigation_marketplace:
+                    case R.id.navigation_sell:
                         viewPager.setCurrentItem(1);
                         break;
-                    case R.id.navigation_suggestions:
+                    case R.id.navigation_buy:
                         viewPager.setCurrentItem(2);
+                        break;
+                    case R.id.navigation_suggestions:
+                        viewPager.setCurrentItem(3);
                         break;
                 }
                 return false;
@@ -94,10 +95,12 @@ public class MainActivity extends AppCompatActivity {
     {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         homeFragment = new HomeFragment();
-        marketplaceFragment = new MarketplaceFragment();
+        sellFragment = new SellFragment();
+        buyFragment = new BuyFragment();
         suggestionsFragment = new SuggestionsFragment();
         adapter.addFragment(homeFragment);
-        adapter.addFragment(marketplaceFragment);
+        adapter.addFragment(sellFragment);
+        adapter.addFragment(buyFragment);
         adapter.addFragment(suggestionsFragment);
 
         viewPager.setAdapter(adapter);

@@ -1,10 +1,35 @@
 <resources>
     <string name="app_name">Rajasthan Hackathon Prototype</string>
     <string name="title_home">Daily</string>
-    <string name="title_marketplace">Marketplace</string>
+    <string name="title_sell">Sell</string>
+    <string name="title_buy">Buy</string>
     <string name="title_suggestions">Suggestions</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="daily_fragment_message">Show daily suggestion based on weather</string>
+
+    <string name="choose_crop">Choose crop</string>
+    <string name="quantity">Quantity in kg</string>
+    <string name="expectation">Best Predicted Price</string>
+    <string name="market_price">Market Price</string>
+
+    <string-array name="crops">
+        <item>Bajra</item>
+        <item>Black gram</item>
+        <item>Copra</item>
+        <item>Green gram</item>
+        <item>Ground nut</item>
+        <item>Jowar</item>
+        <item>Maize</item>
+        <item>Onion</item>
+        <item>Paddy</item>
+        <item>Potato</item>
+        <item>Ragi</item>
+        <item>Sunflower</item>
+        <item>Toor</item>
+    </string-array>
+
+
+
 </resources>
