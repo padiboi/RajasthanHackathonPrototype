@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Rajasthan Hackathon Prototype</string>
+    <string name="title_home">Daily</string>
+    <string name="title_marketplace">Marketplace</string>
+    <string name="title_suggestions">Suggestions</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="daily_fragment_message">Show daily suggestion based on weather</string>
+</resources>
