@@ -47,7 +47,7 @@
         android:inputType="number"
         app:layout_constraintStart_toStartOf="@+id/spinner"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
+<!--
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -82,31 +82,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quantity_sell"
         app:layout_constraintVertical_bias="0.45" />
-
+-->
     <de.codecrafters.tableview.TableView xmlns:table="http://schemas.android.com/apk/res-auto"
         android:id="@+id/tableView"
         android:layout_width="match_parent"
         android:layout_height="185dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        table:layout_constraintBottom_toTopOf="@+id/submit_sell"
         table:layout_constraintEnd_toEndOf="parent"
+        table:layout_constraintHorizontal_bias="0.0"
         table:layout_constraintStart_toStartOf="parent"
-        table:layout_constraintTop_toBottomOf="@+id/exp_price"
-        table:layout_constraintVertical_bias="1.0"
+        table:layout_constraintTop_toBottomOf="@+id/textView4"
         table:tableView_columnCount="4" />
 
     <Button
         android:id="@+id/submit_sell"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        android:text="@string/submit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selling_at" />
 
     <TextView
         android:id="@+id/textView4"
@@ -114,13 +112,56 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Storage Options"
+        android:layout_marginTop="8dp"
+        android:text="@string/storage"
         android:textColor="#000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/tableView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/transport"
+        android:textColor="#000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/quantity_sell"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity_sell" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ToggleButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/quantity_sell"
+        android:textOn="Yes"
+        android:textOff="No"/>
+
+    <TextView
+        android:id="@+id/selling_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableView" />
 
 </android.support.constraint.ConstraintLayout>
 

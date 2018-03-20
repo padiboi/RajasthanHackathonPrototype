@@ -12,3 +12,9 @@
         android:text="@string/daily_fragment_message" />
 
 </FrameLayout>
+
+<!--
+
+    Weather report
+
+-->

@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -45,13 +46,14 @@ public class SellFragment extends Fragment {
 
     private TableView tableView;
     private EditText editQuantity;
+    private TextView salesDesc;
     private Button sellSubmit;
     private int quantity, chosenIndex = 0;
     private String crop, location;
     private Spinner cropSpinner;
     private static final String[] TABLE_HEADERS = { "Duration", "Cost", "Predict", "Profit" };
     private FusedLocationProviderClient mFusedLocationClient;
-    private String[][] DATA_TO_SHOW = new String[5][4];
+    private String[][] DATA_TO_SHOW = new String[11][4];
 
     public SellFragment() {
         // Required empty public constructor
@@ -67,8 +69,10 @@ public class SellFragment extends Fragment {
         tableView = (TableView) view.findViewById(R.id.tableView);
         editQuantity = (EditText) view.findViewById(R.id.quantity_sell);
         sellSubmit = (Button) view.findViewById(R.id.submit_sell);
+        salesDesc = (TextView) view.findViewById(R.id.selling_at);
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this.getActivity(), TABLE_HEADERS));
-        tableView.setDataAdapter(new SimpleTableDataAdapter(this.getActivity(), populateTable()));
+        calculate();
+        tableView.setDataAdapter(new SimpleTableDataAdapter(this.getActivity(), DATA_TO_SHOW));
         tableView.addDataClickListener(new TableDataClickListener() {
             @Override
             public void onDataClicked(int rowIndex, Object clickedData) {
@@ -99,6 +103,8 @@ public class SellFragment extends Fragment {
                 commitToBlockchain();
             }
         });
+
+
         return view;
     }
     // TODO check for location permissions and ask for them
@@ -159,20 +165,6 @@ public class SellFragment extends Fragment {
         return permissionState == PackageManager.PERMISSION_GRANTED;
     }
 
-    private String[][] populateTable(){
-
-        DATA_TO_SHOW[0][0] = "0";
-        DATA_TO_SHOW[0][1] = "0";
-        DATA_TO_SHOW[0][2] = DATA_TO_SHOW[0][3] = "5";
-         for(int i = 1; i<5; i++) {
-             DATA_TO_SHOW[i][0] = Integer.toString(i) + "week";
-             DATA_TO_SHOW[i][1] = "1";
-             DATA_TO_SHOW[i][2] = "2";
-             DATA_TO_SHOW[i][3] = "3";
-         }
-         return DATA_TO_SHOW;
-    }
-
     private void commitToBlockchain(){
 
         RequestQueue mRequestQueue = Volley.newRequestQueue(this.getContext());
@@ -200,5 +192,45 @@ public class SellFragment extends Fragment {
         mRequestQueue.add(stringRequest);
 
     }
+
+    public void calculate() {
+        int quantity = 10;  // quintals
+
+        int price_this_week = 2125;
+
+        salesDesc.setText("Currently Selling at " + Integer.toString(price_this_week));
+        salesDesc.setVisibility(View.VISIBLE);
+
+        float storageCostPerWeek = 6;
+
+        int predictions[] = {2108, 2146, 2104, 2194, 2188, 2132, 2106, 2163, 2227, 2247, 2282};
+
+        int weeklyRevenue = quantity * price_this_week;
+
+        for (int i = 0; i<11; i++) {
+
+            float storage_cost = storageCostPerWeek*i;
+
+            float predicted_cost = quantity * ((predictions[i])  + storage_cost);
+
+            float profit = predicted_cost - weeklyRevenue;
+
+            //if(profit > 0) {
+                // show only rows that make a profit
+                addEntry(i,predictions[i],storage_cost,profit);
+            //}
+        }
+    }
+
+    public void addEntry(int week, int predicted_cost, float storage_cost, float profit) {
+
+        int i = week;
+        DATA_TO_SHOW[i][0] = Integer.toString(i+1) + " week";
+        DATA_TO_SHOW[i][1] = String.valueOf(storage_cost);
+        DATA_TO_SHOW[i][2] = String.valueOf(predicted_cost);
+        DATA_TO_SHOW[i][3] = String.valueOf(profit);
+
+    }
+
 
 }

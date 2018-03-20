@@ -10,9 +10,12 @@
     <string name="daily_fragment_message">Show daily suggestion based on weather</string>
 
     <string name="choose_crop">Choose crop</string>
-    <string name="quantity">Quantity in kg</string>
+    <string name="quantity">Quantity in quintals</string>
     <string name="expectation">Best Predicted Price</string>
     <string name="market_price">Market Price</string>
+    <string name="submit">Submit</string>
+    <string name="storage">Storage Options</string>
+    <string name="transport">Do you have access to transport?</string>
 
     <string-array name="crops">
         <item>Bajra</item>
