@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     HomeFragment homeFragment;
     SellFragment sellFragment;
     BuyFragment buyFragment;
-    SuggestionsFragment suggestionsFragment;
     MenuItem prevMenuItem;
 
     @Override
@@ -41,9 +40,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.navigation_buy:
                         viewPager.setCurrentItem(2);
-                        break;
-                    case R.id.navigation_suggestions:
-                        viewPager.setCurrentItem(3);
                         break;
                 }
                 return false;
@@ -97,11 +93,9 @@ public class MainActivity extends AppCompatActivity {
         homeFragment = new HomeFragment();
         sellFragment = new SellFragment();
         buyFragment = new BuyFragment();
-        suggestionsFragment = new SuggestionsFragment();
         adapter.addFragment(homeFragment);
         adapter.addFragment(sellFragment);
         adapter.addFragment(buyFragment);
-        adapter.addFragment(suggestionsFragment);
 
         viewPager.setAdapter(adapter);
     }

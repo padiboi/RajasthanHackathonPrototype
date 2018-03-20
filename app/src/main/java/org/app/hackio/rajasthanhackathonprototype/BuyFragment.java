@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +32,8 @@ public class BuyFragment extends Fragment {
     private String mParam2;
 
     private GridView gridView;
+    private TextView cropSelectedtv;
+    private String cropSelected;
 
     private String crops[] = {
             "bajra", "blackgram", "copra", "greengram",
@@ -52,7 +57,7 @@ public class BuyFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View v = inflater.inflate(R.layout.fragment_buy, container, false);
-
+        cropSelectedtv = (TextView) v.findViewById(R.id.selected_crop);
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
 
         for(int i=0;i<10;i++){
@@ -75,6 +80,13 @@ public class BuyFragment extends Fragment {
 
         // Setting an adapter containing images to the gridview
         gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                cropSelected = crops[position];
+                cropSelectedtv.setText("Currently selected crop : " + cropSelected);
+            }
+        });
 
         return v;
     }
